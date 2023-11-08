@@ -1,7 +1,12 @@
 
-![Screenshot (4252)](https://github.com/Vipuljain09/Zintlr-Assement/assets/87020143/2655b37b-a2f0-4dd2-93e6-78c9510990ef)
-![Screenshot (4251)](https://github.com/Vipuljain09/Zintlr-Assement/assets/87020143/1ccb1428-e84e-4456-8759-866e0499fdf7)
-![Screenshot (4253)](https://github.com/Vipuljain09/Zintlr-Assement/assets/87020143/7d06a373-32f2-436b-8af0-fc37cf06e832)
+![Screenshot (4251)](https://github.com/Vipuljain09/Zintlr-Assement/assets/87020143/9dfd0851-4447-4501-b932-c098b3ffdcad)
+
+![Screenshot (4252)](https://github.com/Vipuljain09/Zintlr-Assement/assets/87020143/ccfd2c01-c0a2-4f03-bbac-152869d9bce6)
+
+
+
+
+![Screenshot (4253)](https://github.com/Vipuljain09/Zintlr-Assement/assets/87020143/7d597629-c62c-4005-ba1f-d6010de49b2c)
 
 
 # Getting Started with Create React App
