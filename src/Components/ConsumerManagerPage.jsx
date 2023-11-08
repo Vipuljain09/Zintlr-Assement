@@ -1,10 +1,7 @@
 import React from "react";
 import ConsumerHeader from "./ConsumerHeader";
 import ConsumerList from "./ConsumerList";
-import SearchBar from "./SearchBar";
 
-
-import Card from "../utils/Card";
 const ComsumerManagerPage = () => {
   return (
     <div className="mt-4">

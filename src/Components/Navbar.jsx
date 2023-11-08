@@ -4,14 +4,14 @@ import { IoIosNotifications, IoMdContacts } from "react-icons/io";
 import { FaSackDollar ,FaAngleRight } from "react-icons/fa6";
 import { BsChevronDown } from "react-icons/bs";
 import Card from "../utils/Card";
-const Navbar = () => {
+const Navbar = ({onSideBar}) => {
   return (    
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2">
-      <div className="text-blue-500"><FaAngleRight size={'20px'}/></div>
-        <SearchBar />
+      <div className="text-blue-500"><FaAngleRight size={'20px'} className="cursor-pointer" onClick={()=>onSideBar()}/></div>
+        <SearchBar placeholderValue="Search(Eg: Rewards)"/>
       </div>
-      <div className="flex items-center justify-center gap-4">
+      <div className="invisible flex items-center justify-center gap-4 md:visible ">
         <div className="Notification-Icon-Container flex items-start justify-center gap-2">
           <FaSackDollar size={"35px"} />
           <IoIosNotifications size={"35px"} />
@@ -26,6 +26,7 @@ const Navbar = () => {
           <div className="pl-2 pr-2 cursor-pointer">
             <BsChevronDown size={"20px"} />
           </div>
+          
         </Card>
       </div>
     </div>

@@ -5,13 +5,14 @@ import {BsFiletypeCsv} from 'react-icons/bs';
 import {AiFillFilter} from 'react-icons/ai';
 import SearchBar from './SearchBar';
 import Card from '../utils/Card';
-const ConsumerFilter = ({onFilterHandler}) => {
+const ConsumerFilter = ({onFilterHandler,onSearch}) => {
     const filterHandler = ()=>{
         onFilterHandler()
     }
+
   return (
     <div className="flex items-center justify-between my-2">
-        <SearchBar />
+        <SearchBar placeholderValue='Search Consumer..' onSearch = {onSearch}/>
         <div className=" flex items-center justify-center gap-4">
           <SiMicrosoftexcel size={"30px"} />
           <BsFiletypeCsv size={"30px"} />

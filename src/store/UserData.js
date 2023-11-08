@@ -7,7 +7,8 @@ export const Userdata = [
       "KYC-status": "Done",
       "Facilator-type": "Associate",
       "Account-type": "Business",
-      "email": "john@example.com"
+      "email": "john@example.com",
+      "Zone":"South"
     },
     {
         "id":2,
@@ -17,7 +18,8 @@ export const Userdata = [
       "KYC-status": "Pending",
       "Facilator-type": "Field Executive",
       "Account-type": "Pay-and-Use",
-      "email": "jane@example.com"
+      "email": "jane@example.com",
+      "Zone":"East"
     },
     {
         "id":3,
@@ -27,7 +29,8 @@ export const Userdata = [
       "KYC-status": "In Process",
       "Facilator-type": "Sales Executive",
       "Account-type": "Business",
-      "email": "michael@example.com"
+      "email": "michael@example.com",
+      "Zone":"South"
     },
     {
         "id":4,
@@ -37,7 +40,8 @@ export const Userdata = [
       "KYC-status": "Done",
       "Facilator-type": "Direct Consumer",
       "Account-type": "Pay-and-Use",
-      "email": "sarah@example.com"
+      "email": "sarah@example.com",
+      "Zone":"South"
     },
     {
         "id":5,
@@ -47,7 +51,8 @@ export const Userdata = [
       "KYC-status": "Rejected",
       "Facilator-type": "Field Executive",
       "Account-type": "Business",
-      "email": "david@example.com"
+      "email": "david@example.com",
+      "Zone":"East"
     },
     {
         "id":6,
@@ -57,7 +62,8 @@ export const Userdata = [
       "KYC-status": "Done",
       "Facilator-type": "Sales Executive",
       "Account-type": "Business",
-      "email": "emily@example.com"
+      "email": "emily@example.com",
+      "Zone":"West"
     },
     {
         "id":7,
@@ -67,7 +73,8 @@ export const Userdata = [
       "KYC-status": "Pending",
       "Facilator-type": "Direct Consumer",
       "Account-type": "Pay-and-Use",
-      "email": "daniel@example.com"
+      "email": "daniel@example.com",
+      "Zone":"South"
     },
     {
         "id":8,
@@ -77,7 +84,8 @@ export const Userdata = [
       "KYC-status": "In Process",
       "Facilator-type": "Associate",
       "Account-type": "Business",
-      "email": "olivia@example.com"
+      "email": "olivia@example.com",
+      "Zone":"West"
     },
     {
         "id":9,
@@ -87,7 +95,8 @@ export const Userdata = [
       "KYC-status": "Done",
       "Facilator-type": "Field Executive",
       "Account-type": "Business",
-      "email": "william@example.com"
+      "email": "william@example.com",
+      "Zone":"West"
     },
     {
         "id":10,
@@ -98,6 +107,7 @@ export const Userdata = [
       "Facilator-type": "Sales Executive",
       "Account-type": "Pay-and-Use",
       "email": "sophia@example.com"
+      ,"Zone":"East"
     },
     {
         "id":11,
@@ -107,7 +117,8 @@ export const Userdata = [
       "KYC-status": "In Process",
       "Facilator-type": "Direct Consumer",
       "Account-type": "Pay-and-Use",
-      "email": "james@example.com"
+      "email": "james@example.com",
+      "Zone":"West"
     },
     {
         "id":12,
@@ -117,7 +128,8 @@ export const Userdata = [
       "KYC-status": "Pending",
       "Facilator-type": "Associate",
       "Account-type": "Business",
-      "email": "liam@example.com"
+      "email": "liam@example.com",
+      "Zone":"North"
     },
     {
         "id":13,
@@ -127,7 +139,8 @@ export const Userdata = [
       "KYC-status": "Rejected",
       "Facilator-type": "Field Executive",
       "Account-type": "Pay-and-Use",
-      "email": "ava@example.com"
+      "email": "ava@example.com",
+      "Zone":"South"
     },
     {
         "id":14,
@@ -137,7 +150,8 @@ export const Userdata = [
       "KYC-status": "Done",
       "Facilator-type": "Sales Executive",
       "Account-type": "Business",
-      "email": "mia@example.com"
+      "email": "mia@example.com",
+      "Zone":"North"
     },
     {
         "id":15,
@@ -147,7 +161,8 @@ export const Userdata = [
       "KYC-status": "Done",
       "Facilator-type": "Direct Consumer",
       "Account-type": "Business",
-      "email": "ethan@example.com"
+      "email": "ethan@example.com",
+      "Zone":"West"
     },
     {
         "id":16,
@@ -157,7 +172,8 @@ export const Userdata = [
       "KYC-status": "In Process",
       "Facilator-type": "Associate",
       "Account-type": "Pay-and-Use",
-      "email": "harper@example.com"
+      "email": "harper@example.com",
+      "Zone":"East"
     },
     {
         "id":17,
@@ -167,7 +183,8 @@ export const Userdata = [
       "KYC-status": "Done",
       "Facilator-type": "Field Executive",
       "Account-type": "Pay-and-Use",
-      "email": "logan@example.com"
+      "email": "logan@example.com",
+      "Zone":"North"
     },
     {
         "id":18,
@@ -177,7 +194,8 @@ export const Userdata = [
       "KYC-status": "In Process",
       "Facilator-type": "Sales Executive",
       "Account-type": "Business",
-      "email": "charlotte@example.com"
+      "email": "charlotte@example.com",
+      "Zone":"East"
     },
     {
         "id":19,
@@ -187,7 +205,8 @@ export const Userdata = [
       "KYC-status": "Done",
       "Facilator-type": "Direct Consumer",
       "Account-type": "Business",
-      "email": "lily@example.com"
+      "email": "lily@example.com",
+      "Zone":"West"
     },
     {
         "id":20,
@@ -197,7 +216,8 @@ export const Userdata = [
       "KYC-status": "Pending",
       "Facilator-type": "Field Executive",
       "Account-type": "Business",
-      "email": "noah@example.com"
+      "email": "noah@example.com",
+      "Zone":"North"
     }
   ]
   

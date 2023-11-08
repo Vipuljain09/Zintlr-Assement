@@ -2,14 +2,24 @@ import React, { useEffect, useState } from "react";
 import { Userdata } from "../store/UserData";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 import ConsumerFilter from "./ConsumerFilter";
-import {RiArrowDownSLine} from 'react-icons/ri'
+import { RiArrowDownSLine } from "react-icons/ri";
+import Dropdown from "../utils/DropDown";
+const color = {
+  Done: "green",
+  Pending: "orange",
+  "In Process": "orange",
+  Rejected: "red",
+};
+
 const ConsumerList = () => {
   const [pageNo, setPage] = useState(1);
-  const [TotalConsumer,setTotalConsumer] = useState(Userdata);
+  const [TotalConsumer, setTotalConsumer] = useState(Userdata);
   const [listItem, setListItem] = useState(TotalConsumer.slice(0, 5));
 
-  const [filterList,setfilterList] = useState({"KYC-status":'Done'});
+  const [filterList, setfilterList] = useState({});
 
+  const [zoneDropDown, setZoneDropDown] = useState(false);
+  const [zoneValue, setZone] = useState("");
   const DecrementPageCounter = () => {
     setPage(Math.max(1, pageNo - 1));
   };
@@ -18,50 +28,83 @@ const ConsumerList = () => {
     setPage((pageNo) => pageNo + 1);
   };
 
-  const filterListHandler = ()=>{
-    console.log("pp");
+  const filterListHandler = () => {
+    console.log("pp", filterList);
     // setPage(1);
-    const newList = TotalConsumer.filter(item=>{
-        for (const key in filterList) {
-            if(item[key]!== filterList[key])return false;
-           
-          }
-        return true;
-    })
-    console.log(newList);
+    if (filterList.length === 0) return;
+    const newList = Userdata.filter((item) => {
+      for (const key in filterList) {
+        if (item[key] !== filterList[key]) return false;
+      }
+      return true;
+    });
     setTotalConsumer(newList);
-  }
-  
+  };
+
+  const searchConsumerHandler = (value) => {
+    console.log(value);
+    if (!value) {
+      setTotalConsumer(Userdata);
+      return;
+    }
+    const newList = TotalConsumer.filter((item) => {
+      if (value === item["Consumer Name"]) return true;
+      else return false;
+    });
+    setTotalConsumer(newList);
+  };
+
   useEffect(() => {
     let skipCount = (pageNo - 1) * 5;
     setListItem(TotalConsumer.slice(skipCount, skipCount + 5));
-  }, [pageNo,TotalConsumer]);
+  }, [pageNo, TotalConsumer]);
 
   return (
     <div>
-      <ConsumerFilter onFilterHandler={filterListHandler}/>
+      <ConsumerFilter
+        onFilterHandler={filterListHandler}
+        onSearch={searchConsumerHandler}
+      />
       <ul className="flex flex-col ">
         <li className="flex items-center justify-around my-2 bg-gray-100 py-2 border-2 border-gray-500">
-          <p className="text-lg font-semibold text-gray-800 w-[10%]">
+          <p className="text-lg font-semibold text-center text-gray-800 w-[10%]">
             Consumer Name
           </p>
-          <p className="text-lg font-semibold text-gray-800 w-[10%]">
+          <p className="text-lg font-semibold text-center text-gray-800 w-[10%]">
             Asset-Value
           </p>
-          <p className="text-lg font-semibold text-gray-800 w-[10%]">
+          <p className="text-lg font-semibold text-center text-gray-800 w-[10%]">
             Revenue-Value
           </p>
-          <p className="text-lg font-semibold text-gray-800 px-4 py-2 w-[10%]">
-            KYC-status <RiArrowDownSLine/>
+          <p className="flex items-center relative text-lg font-semibold text-center text-gray-800 px-4 py-2 w-[10%]">
+            KYC-status
           </p>
-          <p className="text-lg font-semibold text-gray-800 w-[10%]">
+          <p className="text-lg font-semibold text-center text-gray-800 w-[10%]">
             Facilator-type
           </p>
-          <p className="text-lg font-semibold text-gray-800 w-[10%]">Zone</p>
-          <p className="text-lg font-semibold text-gray-800 w-[10%]">
+          <p className="flex items-center relative text-lg font-semibold text-center text-gray-800 w-[10%]">
+            Zone
+            <RiArrowDownSLine
+              size={"25px"}
+              className="cursor-pointer"
+              onClick={() => setZoneDropDown((pre) => !pre)}
+            />
+            {zoneDropDown && (
+              <Dropdown
+                options={["South", "North", "East", "West"]}
+                isVisible={true}
+                setValue={(val) => {
+                  setfilterList({ ...filterList, Zone: val });
+                }}
+              />
+            )}
+          </p>
+          <p className="text-lg font-semibold text-center text-gray-800 w-[10%]">
             Account-type
           </p>
-          <p className="text-lg font-semibold text-gray-800 w-[20%]">Email</p>
+          <p className="text-lg font-semibold text-center text-gray-800 w-[20%]">
+            Email
+          </p>
         </li>
         {listItem.map((data) => (
           <li
@@ -77,14 +120,20 @@ const ConsumerList = () => {
             <p className="text-lg font-semibold text-center text-gray-500 w-[10%]">
               {data["Revenue-Value"]}
             </p>
-            <p className="text-lg font-semibold text-center px-4 py-2 bg-green-200 rounded-lg text-green-600 w-[10%]">
+            <p
+              className={
+                data["KYC-status"] === "Done"
+                  ? "text-green-600 bg-green-100 border-2 border-green-600 text-lg font-semibold text-center px-4 py-2 rounded-lg w-[10%]"
+                  : "text-orange-600 bg-orange-100 border-2 border-orange-600 text-lg font-semibold text-center px-4 py-2 rounded-lg w-[10%]"
+              }
+            >
               {data["KYC-status"]}
             </p>
             <p className="text-lg font-semibold text-center text-gray-500 w-[10%]">
               {data["Facilator-type"]}
             </p>
             <p className="text-lg font-semibold text-center text-gray-500 w-[10%]">
-              South
+              {data["Zone"]}
             </p>
             <p className="text-lg font-semibold text-center text-gray-500 w-[10%]">
               {data["Account-type"]}
