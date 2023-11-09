@@ -1,3 +1,14 @@
+
+![Screenshot (4251)](https://github.com/Vipuljain09/Zintlr-Assement/assets/87020143/9dfd0851-4447-4501-b932-c098b3ffdcad)
+
+![Screenshot (4252)](https://github.com/Vipuljain09/Zintlr-Assement/assets/87020143/ccfd2c01-c0a2-4f03-bbac-152869d9bce6)
+
+
+
+
+![Screenshot (4253)](https://github.com/Vipuljain09/Zintlr-Assement/assets/87020143/7d597629-c62c-4005-ba1f-d6010de49b2c)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
