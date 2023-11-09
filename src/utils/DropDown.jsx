@@ -54,13 +54,13 @@ function Dropdown({ options, isVisible, toggleVisibility, setValue}) {
     <div className="dropdown-content min-w-[120px]" style={dropdownContentStyle}>
       <form>
         {options.map((option, index) => (
-          <label className='text-gray-800 font-semibold' key={index} style={{ display: 'block' }}>
+          <label className='text-sm text-gray-800 font-semibold flex items-center gap-1' key={index}>
             <input
               type="checkbox"
               name={option}
               checked={formData[option]}
               onChange={handleCheckboxChange}
-              className='mr-2 border-2 border-gray-800'
+              className='border-2 border-gray-800'
             />
             {option}
           </label>

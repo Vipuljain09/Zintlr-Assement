@@ -5,7 +5,9 @@ const SearchBar = ({onSearch,placeholderValue}) => {
   const [searchValue,setSearchValue] = useState('');
 
   const searchHandler = ()=>{
-    return onSearch(searchValue);
+    let val = searchValue;
+    setSearchValue('');
+    return onSearch(val);
   }
   const changeHandler=(event)=>{
     setSearchValue(event.target.value);

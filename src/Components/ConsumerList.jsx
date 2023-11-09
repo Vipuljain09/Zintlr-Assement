@@ -2,13 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Userdata } from "../store/UserData";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 import ConsumerFilter from "./ConsumerFilter";
-import { RiArrowDownSLine } from "react-icons/ri";
-import Dropdown from "../utils/DropDown";
-const color = {
-  Done: "green",
-  Pending: "orange",
-  "In Process": "orange",
-  Rejected: "red",
+import ConsumerListHeader from "./ConsumerListHeader";
+const optionList = {
+  "KYC-status": ["Done", "Pending", "In Process", "Rejected"],
+  Zone: ["North", "South", "West", "East"],
+  "Account-type": ["Business", "Pay-and-Use"],
+};
+const DefaultshowDropDownList = {
+  "Zone": false,
+  "KYC-status": false,
+  "Account-type": false,
+};
+const DefaultfilterList = {
+  "Zone": "",
+  "KYC-status": "",
+  "Account-type": "",
 };
 
 const ConsumerList = () => {
@@ -16,10 +24,9 @@ const ConsumerList = () => {
   const [TotalConsumer, setTotalConsumer] = useState(Userdata);
   const [listItem, setListItem] = useState(TotalConsumer.slice(0, 5));
 
-  const [filterList, setfilterList] = useState({});
+  const [filterList, setfilterList] = useState(DefaultfilterList);
+  const [showDropDownList, setShowDropDownList] = useState(DefaultshowDropDownList);
 
-  const [zoneDropDown, setZoneDropDown] = useState(false);
-  const [zoneValue, setZone] = useState("");
   const DecrementPageCounter = () => {
     setPage(Math.max(1, pageNo - 1));
   };
@@ -29,25 +36,29 @@ const ConsumerList = () => {
   };
 
   const filterListHandler = () => {
+    setShowDropDownList(DefaultshowDropDownList);
+    setfilterList(DefaultfilterList);
     console.log("pp", filterList);
     // setPage(1);
     if (filterList.length === 0) return;
     const newList = Userdata.filter((item) => {
       for (const key in filterList) {
-        if (item[key] !== filterList[key]) return false;
+        if (filterList[key]!=='' && item[key] !== filterList[key]) return false;
       }
       return true;
     });
+    console.log(newList);
     setTotalConsumer(newList);
   };
 
   const searchConsumerHandler = (value) => {
-    console.log(value);
+    setShowDropDownList(DefaultshowDropDownList);
+    setfilterList(DefaultfilterList);
     if (!value) {
       setTotalConsumer(Userdata);
       return;
     }
-    const newList = TotalConsumer.filter((item) => {
+    const newList = Userdata.filter((item) => {
       if (value === item["Consumer Name"]) return true;
       else return false;
     });
@@ -58,7 +69,7 @@ const ConsumerList = () => {
     let skipCount = (pageNo - 1) * 5;
     setListItem(TotalConsumer.slice(skipCount, skipCount + 5));
   }, [pageNo, TotalConsumer]);
-
+ 
   return (
     <div>
       <ConsumerFilter
@@ -66,46 +77,13 @@ const ConsumerList = () => {
         onSearch={searchConsumerHandler}
       />
       <ul className="flex flex-col ">
-        <li className="flex items-center justify-around my-2 bg-gray-100 py-2 border-2 border-gray-500">
-          <p className="text-lg font-semibold text-center text-gray-800 w-[10%]">
-            Consumer Name
-          </p>
-          <p className="text-lg font-semibold text-center text-gray-800 w-[10%]">
-            Asset-Value
-          </p>
-          <p className="text-lg font-semibold text-center text-gray-800 w-[10%]">
-            Revenue-Value
-          </p>
-          <p className="flex items-center relative text-lg font-semibold text-center text-gray-800 px-4 py-2 w-[10%]">
-            KYC-status
-          </p>
-          <p className="text-lg font-semibold text-center text-gray-800 w-[10%]">
-            Facilator-type
-          </p>
-          <p className="flex items-center relative text-lg font-semibold text-center text-gray-800 w-[10%]">
-            Zone
-            <RiArrowDownSLine
-              size={"25px"}
-              className="cursor-pointer"
-              onClick={() => setZoneDropDown((pre) => !pre)}
-            />
-            {zoneDropDown && (
-              <Dropdown
-                options={["South", "North", "East", "West"]}
-                isVisible={true}
-                setValue={(val) => {
-                  setfilterList({ ...filterList, Zone: val });
-                }}
-              />
-            )}
-          </p>
-          <p className="text-lg font-semibold text-center text-gray-800 w-[10%]">
-            Account-type
-          </p>
-          <p className="text-lg font-semibold text-center text-gray-800 w-[20%]">
-            Email
-          </p>
-        </li>
+        <ConsumerListHeader
+          setShowDropDownList={(val)=>setShowDropDownList(val)}
+          showDropDownList={showDropDownList}
+          optionList={optionList}
+          setfilterList={(val)=>setfilterList(val)}
+          filterList={filterList}
+        />
         {listItem.map((data) => (
           <li
             className="flex items-center justify-around my-2 bg-gray-100 py-2"

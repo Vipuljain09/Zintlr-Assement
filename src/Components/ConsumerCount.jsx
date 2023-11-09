@@ -1,21 +1,34 @@
 import React from 'react'
 import { IoIosAlert } from "react-icons/io";
+import { Userdata as UserData } from '../store/UserData';
 const ConsumerCountList = [
   {
     title: "Direct Consumer",
-    Count: 150,
+    Count: UserData.reduce((accumulate,curr)=>{
+      if(curr['Facilator-type']=='Direct Consumer')return accumulate+1;
+      else return accumulate;
+    },0),
   },
   {
     title: "Throught Associted",
-    Count: 130,
+    Count: UserData.reduce((accumulate,curr)=>{
+      if(curr['Facilator-type']=='Associate')return accumulate+1;
+      else return accumulate;
+    },0),
   },
   {
     title: "Throught Field Executive",
-    Count: 190,
+    Count: UserData.reduce((accumulate,curr)=>{
+      if(curr['Facilator-type']=='Field Executive')return accumulate+1;
+      else return accumulate;
+    },0),
   },
   {
     title: "Throught Sales Executive",
-    Count: 110,
+    Count: UserData.reduce((accumulate,curr)=>{
+      if(curr['Facilator-type']=='Sales Executive')return accumulate+1;
+      else return accumulate;
+    },0),
   },
 ];
 const CosumerCount = () => {
@@ -29,7 +42,7 @@ const CosumerCount = () => {
               />
               <div>
                 <p className="text-lg">Total Consumers</p>
-                <p className="text-2xl font-semibold text-gray-800">1,256</p>
+                <p className="text-2xl font-semibold text-gray-800">{UserData.length}</p>
               </div>
             </div>
             <div className="w-full mx-4">
